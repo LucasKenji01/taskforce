@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+
+  <nav class="blue darken-1">
+    <div class="nav-wrapper container">
+      <a href="#" class="brand-logo">TaskForce</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/task">Minhas Tarefas</a></li>
+        <li><a href="#">Concluídas</a></li>
+        <li><a href="#">Conta</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <div class="card-panel teal accent-3" th:if="${success}" th:text="${success}"></div>
+    <div class="card-panel red accent-3 white-text" th:if="${error}" th:text="${error}"></div>
+
+    <h2>Minhas Tarefas</h2>
+
+    <div class="row">
+      <div class="col s12 m6 l4" th:each="task : ${tasks}">
+        <div class="card">
+          <div class="card-content">
+            <div class="row valign-wrapper">
+              <span class="card-title col s8" th:text="${task.title}"></span>
+              <span class="card-title col s4">
+                <span class="badge red white-text" th:text="${task.priority}"></span>
+              </span>
+            </div>
+            <p th:text="${task.description}"></p>
+          </div>
+          <div class="card-action">
+            <a class="waves-effect waves-light btn">EDITAR</a>
+            <a th:href="${'/task/delete/' + task.id}" class="waves-effect waves-light btn red">EXCLUIR</a>
+            <a class="waves-effect waves-light btn blue">CONCLUÍDA</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fixed-action-btn">
+      <a class="btn-floating btn-large blue darken-1">
+        <i class="large material-icons">add</i>
+      </a>
+    </div>
+
+  </main>
+
+</body>
+
+</html>
