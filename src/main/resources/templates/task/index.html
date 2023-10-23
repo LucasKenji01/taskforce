@@ -17,9 +17,9 @@
     <div class="nav-wrapper container">
       <a href="#" class="brand-logo">TaskForce</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="/task">Minhas Tarefas</a></li>
-        <li><a href="#">Concluídas</a></li>
-        <li><a href="#">Conta</a></li>
+        <li><a href="/task" th:text="#{task.mytasks}"></a></li>
+        <li><a href="#" th:text="#{task.done}"></a></li>
+        <li><a href="#" th:text="#{account}"></a></li>
         <li>
           <a class='dropdown-trigger' href='#' data-target='dropdown1'>
             <img class="avatar" th:src="${avatar_url}" alt="">
@@ -28,7 +28,7 @@
           <ul id='dropdown1' class='dropdown-content'>
             <li><span th:text="${username}"></span></li>
             <li class="divider" tabindex="-1"></li>
-            <li><a href="/logout"><i class="material-icons">logout</i>sair</a></li>
+            <li><a href="/logout" th:text="#{logout}"><i class="material-icons">logout</i></a></li>
           </ul>
           </span>
         </li>
@@ -41,7 +41,7 @@
     <div class="card-panel teal accent-3" th:if="${success}" th:text="${success}"></div>
     <div class="card-panel red accent-3 white-text" th:if="${error}" th:text="${error}"></div>
 
-    <h2>Minhas Tarefas</h2>
+    <h2 th:text="#{mytasks}"></h2>
 
     <div class="row">
       <div class="col s12 m6 l4" th:each="task : ${tasks}">
@@ -56,9 +56,9 @@
             <p th:text="${task.description}"></p>
           </div>
           <div class="card-action">
-            <a class="waves-effect waves-light btn">EDITAR</a>
-            <a th:href="${'/task/delete/' + task.id}" class="waves-effect waves-light btn red">EXCLUIR</a>
-            <a class="waves-effect waves-light btn blue">CONCLUÍDA</a>
+            <a class="waves-effect waves-light btn" th:text="#{edit}"></a>
+            <a th:href="${'/task/delete/' + task.id}" class="waves-effect waves-light btn red" th:text="#{remove}"></a>
+            <a class="waves-effect waves-light btn blue" th:text="#{completed}"></a>
           </div>
         </div>
       </div>

@@ -16,16 +16,16 @@
     <div class="nav-wrapper container">
       <a href="#" class="brand-logo">TaskForce</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="/task">Minhas Tarefas</a></li>
-        <li><a href="#">Concluídas</a></li>
-        <li><a href="#">Conta</a></li>
+        <li><a href="/task" th:text="#{task.mytasks}"></a></li>
+        <li><a href="#" th:text="#{task.done}"></a></li>
+        <li><a href="#" th:text="#{account}"></a></li>
       </ul>
     </div>
   </nav>
 
   <main class="container">
 
-    <h2>Cadastrar Tarefa</h2>
+    <h2 th:text="#{registertask}"></h2>
 
     <div class="card">
       <form class="col s12" th:action="${'/task'}" method="post" th:object="${task}">
@@ -34,7 +34,7 @@
           <div class="row">
             <div class="input-field col s12">
               <input th:field="*{title}" type="text" class="validate" th:classappend="${#fields.hasErrors()} ? invalid">
-              <label for="title">Título</label>
+              <label for="title" th:text="#{form.title}"></label>
               <span class="helper-text red-text" th:errors="*{title}"></span>
             </div>
           </div>
@@ -42,24 +42,24 @@
           <div class="row">
             <div class="input-field col s12">
               <textarea class="materialize-textarea" th:field="*{description}"></textarea>
-              <label for="description">Descrição</label>
+              <label for="description" th:text="#{form.description}"></label>
               <span class="helper-text red-text" th:errors="*{description}"></span>
             </div>
           </div>
 
-          <label>Prioridade</label>
+          <label th:text="#{form.label.priority}"></label>
           <select name="priority" class="browser-default">
-            <option value="" disabled selected>Escolha a prioridade</option>
-            <option value="1">ALTA</option>
-            <option value="2">MÉDIA</option>
-            <option value="3">BAIXA</option>
+            <option value="" disabled selected th:text="#{form.option.choose}">Escolha a prioridade</option>
+            <option value="1" th:text="#{form.option.high}"></option>
+            <option value="2" th:text="#{form.option.medium}"></option>
+            <option value="3" th:text="#{form.option.low}"></option>
           </select>
 
         </div>
 
         <div class="card-action right-align">
-          <a href="/task">cancelar</a>
-          <button class="btn">cadastrar</button>
+          <a href="/task" th:text="#{form.cancel}"></a>
+          <button class="btn" th:text="#{form.register}"></button>
         </div>
 
       </form>
